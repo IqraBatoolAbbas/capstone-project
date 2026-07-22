@@ -1,103 +1,94 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+/* Main Content */
+.main-content {
+    transition: margin-left .3s;
 }
 
-.dashboard-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+/* Fix pagination dots and list styling */
+#pagination-controls ul {
+    display: flex !important;
+    list-style: none !important; /* Visual dots ko hatane ke liye */
+    padding-left: 2px; 
+    margin: 2px !important;
+    gap: 6px;
 }
 
-.card-header {
-    padding: 16px 24px;
-    border-bottom: 1px solid #e8e8e8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
+#pagination-controls li {
+    display: inline-block;
 }
 
-.card-title {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
-}
-
-.card-filters {
-    display: flex;
-    gap: 12px;
-}
-
-.filter-select {
-    padding: 8px 12px;
-    border: 1px solid #d9d9d9;
-    border-radius: 6px;
+#pagination-controls a, 
+#pagination-controls button,
+#pagination-controls span {
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    color: #0d6efd;
+    text-decoration: none;
     background-color: #fff;
-    font-size: 14px;
     cursor: pointer;
-    transition: border-color 0.3s;
 }
 
-.filter-select:hover {
-    border-color: #40a9ff;
+#pagination-controls li.active a,
+#pagination-controls li.active button {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+.dashboard-card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
 }
 
-.filter-select:focus {
-    outline: none;
-    border-color: #40a9ff;
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
-}
-
-.card-body {
-    padding: 24px;
-}
-
-.chart-area {
+.chart-container {
+    position: relative;
     height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fafafa;
-    border-radius: 6px;
-    color: #888;
-    font-size: 16px;
+    padding: 1rem;
 }
 
-.card-footer {
-    padding: 16px 24px;
-    border-top: 1px solid #e8e8e8;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f9f9f9;
+.form-select-sm:focus, .form-select-sm:active {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: #86b7fe;
 }
 
 .metric {
-    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease; 
+    flex-basis: 200px; /* Base width for metrics */
+    flex-grow: 1;
+}
+
+.metric:hover {
+    background-color: #f8f9fa;
 }
 
 .metric-label {
-    display: block;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 4px;
+    font-size: 0.9rem;
 }
 
 .metric-value {
-    display: block;
-    font-size: 22px;
-    font-weight: 700;
-    color: #222;
+    transition: color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Simple hiding for this example */
+    }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.badge {
+    padding: 0.5em 0.75em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50px;
 }
