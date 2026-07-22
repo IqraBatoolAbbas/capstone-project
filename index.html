@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h2 class="card-title">Sales Analytics</h2>
+            <div class="card-filters">
+                <select id="time-range-filter" class="filter-select">
+                    <option value="7">Last 7 Days</option>
+                    <option value="30" selected>Last 30 Days</option>
+                    <option value="90">Last 90 Days</option>
+                </select>
+                <select id="region-filter" class="filter-select">
+                    <option value="all">All Regions</option>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="chart-area" class="chart-area">
+                <!-- Chart will be rendered here by JavaScript -->
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="metric">
+                <span class="metric-label">Total Sales</span>
+                <span id="total-sales" class="metric-value">$0</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Total Orders</span>
+                <span id="total-orders" class="metric-value">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
