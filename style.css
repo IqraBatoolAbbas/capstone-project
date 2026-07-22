@@ -1,0 +1,94 @@
+body {
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+/* Main Content */
+.main-content {
+    transition: margin-left .3s;
+}
+
+/* Fix pagination dots and list styling */
+#pagination-controls ul {
+    display: flex !important;
+    list-style: none !important; /* Visual dots ko hatane ke liye */
+    padding-left: 2px; 
+    margin: 2px !important;
+    gap: 6px;
+}
+
+#pagination-controls li {
+    display: inline-block;
+}
+
+#pagination-controls a, 
+#pagination-controls button,
+#pagination-controls span {
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    color: #0d6efd;
+    text-decoration: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#pagination-controls li.active a,
+#pagination-controls li.active button {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+.dashboard-card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.chart-container {
+    position: relative;
+    height: 250px;
+    padding: 1rem;
+}
+
+.form-select-sm:focus, .form-select-sm:active {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: #86b7fe;
+}
+
+.metric {
+    padding: 1rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease; 
+    flex-basis: 200px; /* Base width for metrics */
+    flex-grow: 1;
+}
+
+.metric:hover {
+    background-color: #f8f9fa;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+}
+
+.metric-value {
+    transition: color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Simple hiding for this example */
+    }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.badge {
+    padding: 0.5em 0.75em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50px;
+}

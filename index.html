@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navbar with Navigation Links, Search, and Profile -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold text-white me-4" href="#">
+            <img src="logo.png" alt="Logo" width="30" height="30" class="img-fluid">
+            Analytics Dashboard
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="fas fa-chart-bar me-1"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-shopping-bag me-1"></i> Sales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-cog me-1"></i> Settings</a>
+                </li>
+            </ul>
+
+            <!-- Search Bar & User Utilities -->
+            <div class="d-flex align-items-center gap-3">
+                <form class="d-flex">
+                    <input class="form-control form-control-sm me-2" type="search" placeholder="🔍 Search..." aria-label="Search">
+                </form>
+                <a href="#" class="text-white"><i class="fas fa-bell fs-5"></i></a>
+                <a href="#" class="text-white"><i class="fas fa-user-circle fs-4"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+     <!-- Page Content -->
+            <main class="p-4">
+                <!-- Analytics Card -->
+                <div class="card shadow-sm dashboard-card mb-4">
+                    <div class="card-header bg-white border-0 pt-3">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start">
+                            <div>
+                                <h2 class="card-title h5 fw-bold">Sales Analytics</h2>
+                                <p class="card-subtitle text-muted">An overview of sales performance</p>
+                            </div>
+                            <div class="card-filters d-flex gap-2 mt-2 mt-sm-0">
+                                <div>
+                                    <label for="time-range-filter" class="visually-hidden">Time Range</label>
+                                    <select id="time-range-filter" class="form-select form-select-sm">
+                                        <option value="7">Last 7 Days</option>
+                                        <option value="30" selected>Last 30 Days</option>
+                                        <option value="90">Last 90 Days</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="region-filter" class="visually-hidden">Region</label>
+                                    <select id="region-filter" class="form-select form-select-sm">
+                                        <option value="all">All Regions</option>
+                                        <option value="north">North</option>
+                                        <option value="south">South</option>
+                                        <option value="east">East</option>
+                                        <option value="west">West</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="chart-area" class="chart-container">
+                            <canvas id="sales-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 d-flex flex-wrap justify-content-around text-center">
+                        <div class="metric"><span class="metric-label d-block text-muted"><i class="fas fa-dollar-sign me-2"></i>Total Sales</span><span id="total-sales" class="metric-value h5 fw-bold" aria-live="polite">$0</span></div>
+                        <div class="metric"><span class="metric-label d-block text-muted"><i class="fas fa-shopping-cart me-2"></i>Total Orders</span><span id="total-orders" class="metric-value h5 fw-bold" aria-live="polite">0</span></div>
+                        <div class="metric"><span class="metric-label d-block text-muted"><i class="fas fa-receipt me-2"></i>Avg. Order Value</span><span id="avg-order-value" class="metric-value h5 fw-bold" aria-live="polite">$0</span></div>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions Table -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white border-0">
+                        <h3 class="h5 fw-bold">Recent Transactions</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr><th>ID</th><th>Customer</th><th>Amount</th><th>Status</th><th>Date</th></tr>
+                                </thead>
+                                <tbody id="transactions-table-body">
+                                    <!-- Rows will be inserted by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 d-flex justify-content-end">
+                        <nav id="pagination-controls" aria-label="Page navigation"></nav>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
